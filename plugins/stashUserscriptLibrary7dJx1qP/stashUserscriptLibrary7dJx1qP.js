@@ -200,6 +200,8 @@
                     this.processScenes(evt.detail);
                     this.processStudios(evt.detail);
                     this.processPerformers(evt.detail);
+                    this.processGalleries(evt.detail);
+                    this.processMarkers(evt.detail);
                     this.processApiKey(evt.detail);
                     this.dispatchEvent(new CustomEvent('stash:response', { 'detail': evt.detail }));
                 });
@@ -223,6 +225,8 @@
                 this.scenes = {};
                 this.studios = {};
                 this.performers = {};
+                this.galleries = {};
+                this.scene_markers = {};
                 this.userscripts = [];
                 this.sceneTaggerObserver = new MutationObserver(mutations => {
                     mutations.forEach(mutation => {
@@ -887,6 +891,20 @@
                 if (data.data.findPerformers?.performers) {
                     for (const performer of data.data.findPerformers.performers) {
                         this.performers[performer.id] = performer;
+                    }
+                }
+            }
+            processGalleries(data) {
+                if (data.data.findGalleries?.galleries) {
+                    for (const gallery of data.data.findGalleries.galleries) {
+                        this.galleries[gallery.id] = gallery;
+                    }
+                }
+            }
+            processMarkers(data) {
+                if (data.data.findSceneMarkers?.scene_markers) {
+                    for (const scene_marker of data.data.findSceneMarkers.scene_markers) {
+                        this.scene_markers[scene_marker.id] = scene_marker;
                     }
                 }
             }
