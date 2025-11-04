@@ -1,0 +1,10 @@
+name: Stash External Player Integration
+# requires: stashUserscriptLibrary7dJx1qP
+description: Add icons for External Player
+version: 0.1.1
+url: https://github.com/7dJx1qP/stash-plugins#stash-batch-query-edit
+ui:
+  requires: 
+  - stashUserscriptLibrary7dJx1qP
+  javascript:
+  - stashExternalSoftwareLinks.js
